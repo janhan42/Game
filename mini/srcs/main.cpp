@@ -16,8 +16,8 @@
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(600, 400), "Space Game");
-
+    sf::RenderWindow window(sf::VideoMode(1280, 800), "Space Game");
+    window.setFramerateLimit(60);
     sf::Event event;
 
     Player User(50.f, 50.f);
@@ -35,6 +35,7 @@ int main()
         }
         window.clear();
         User.drawTo(window);
+        User.update(0.5f);
         window.display();
     }
 
