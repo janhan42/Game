@@ -1,0 +1,2 @@
+CompileFlags:
+ Add: [-I/Users/zinox/Game/Space/SFML/include, -I/Users/zinox/Game/Space/src, -std=c++14]
