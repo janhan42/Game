@@ -1,0 +1,2 @@
+CompileFlags:
+ Add: [-I/Users/janhan/Game/DraggableObject/SFML/include, -I/Users/janhan/Game/DraggableObject/src, -std=c++14]
