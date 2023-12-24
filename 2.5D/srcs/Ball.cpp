@@ -6,7 +6,7 @@
 /*   By: janhan <janhan@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 01:03:44 by janhan            #+#    #+#             */
-/*   Updated: 2023/12/24 18:40:28 by janhan           ###   ########.fr       */
+/*   Updated: 2023/12/24 19:06:48 by janhan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ void            Ball::updatePhysics(std::vector<Ball>& vecBall, sf::RenderWindow
                                  (mass + otherBall.getMass()) * dotProduct(relativeVelocity, nomal));
                 vel += (inpulse / mass) * nomal;
                 otherBall.setVelocity(otherBall.getVelocity() - (inpulse / otherBall.getMass()) * nomal);
-
                 float overlap = midDistance - distance;
                 sf::Vector2f correction = (overlap / 2.0f) * (distVector / distance);
                 newPosition -= correction;
