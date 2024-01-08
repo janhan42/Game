@@ -1,0 +1,2 @@
+CompileFlags:
+ Add: [-I/Users/zinox/Game/RectangleCollision/SFML/include, -I/Users/zinox/Game/RectangleCollision/src, -std=c++14]
