@@ -1,2 +1,0 @@
-CompileFlags:
- Add: [-I/Users/janhan/Game/2.5D/SFML/include, -I/Users/janhan/Game/2.5D/src, -std=c++14]

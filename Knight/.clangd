@@ -1,0 +1,2 @@
+CompileFlags:
+ Add: [-I/Users/janhan/Game/Knight/SFML/include, -I/Users/janhan/Game/Knight/src, -std=c++14]

@@ -1,4 +1,4 @@
-NAME			=		TEST
+NAME			=		Knight
 CXX				=		c++
 CXXFLAGS		=		-I./SFML/include -std=c++11
 LDFLAGS			=		-L./SFML/lib -lsfml-window -lsfml-graphics -lsfml-system -Wl,-rpath,./SFML/lib
@@ -7,8 +7,8 @@ SRCS_DIR		=		./srcs
 
 OBJ_DIR			=		./.OBJ
 
-SRC_FILES		=		$(SRCS_DIR)/main.cpp			\
-						$(SRCS_DIR)/Ball.cpp
+SRC_FILES		=		$(SRCS_DIR)/Knight.cpp				\
+						$(SRCS_DIR)/Player.cpp
 
 OBJ_FILES		=		$(SRC_FILES:$(SRCS_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
@@ -24,18 +24,18 @@ DELETELINE='\033[K;
 all : $(NAME)
 
 $(NAME) : $(OBJ_FILES)
-	@echo $(CURSIVE)$(YELLOW) "   - Making $(NAME) Game -" $(NONE)
+	@echo $(CURSIVE)$(YELLOW) "- Making $(NAME) Game -" $(NONE)
 	@$(CXX) $(LDFLAGS) $^ -o $@
-	@echo $(CURSIVE)$(YELLOW) "    - Compiling $(NAME) -" $(NONE)
-	@echo $(GREEN)"            - Complete -"$(NONE)
+	@echo $(CURSIVE)$(YELLOW) " - Compiling $(NAME) -" $(NONE)
+	@echo $(GREEN)"        - Complete -"$(NONE)
 
 $(OBJ_DIR)/%.o : $(SRCS_DIR)/%.cpp
-	@echo $(CURSIVE)$(YELLOW) "      - Making object files -" $(NONE)
+	@echo $(CURSIVE)$(YELLOW) "  - Making object files -" $(NONE)
 	@$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean :
 	@rm -fr $(OBJ_FILES)
-	@echo $(CURSIVE)$(BLUE) "       - clean OBJ files -" $(NONE)
+	@echo $(CURSIVE)$(BLUE) "   - clean OBJ files -" $(NONE)
 
 fclean : clean
 	@rm -fr $(NAME)
