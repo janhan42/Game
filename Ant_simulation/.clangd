@@ -1,0 +1,2 @@
+CompileFlags:
+ Add: [-I/Users/janhan/Game/Ant_simulation/SFML/include, -I/Users/janhan/Game/Ant_simulation/src, -std=c++14]
