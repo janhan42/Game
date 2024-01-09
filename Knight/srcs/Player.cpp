@@ -25,7 +25,7 @@ Player::Player()
 	sf::Texture Death;
 	if (!Idle.loadFromFile("srcs/texture/_Idle.png"))
 		exit(1);
-	if (!Left.loadFromFile("srcs/texture/_Run2.png"))
+	if (!Left.loadFromFile("srcs/texture/_Run.png"))
 		exit(1);
 	if (!Right.loadFromFile("srcs/texture/_Run.png"))
 		exit(1);

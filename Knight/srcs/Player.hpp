@@ -30,6 +30,8 @@ class Player
 			Roll,
 			Death,
 		};
+
+
 		Player();
 		void				inPutHandle(sf::Sprite& playerSprite);
 		sf::Texture&		getTexture(int PlayerState);
