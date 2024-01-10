@@ -8,6 +8,7 @@ SRCS_DIR		=		./srcs
 OBJ_DIR			=		./.OBJ
 
 SRC_FILES		=		$(SRCS_DIR)/Knight.cpp				\
+						$(SRCS_DIR)/System.cpp				\
 						$(SRCS_DIR)/Player.cpp
 
 OBJ_FILES		=		$(SRC_FILES:$(SRCS_DIR)/%.cpp=$(OBJ_DIR)/%.o)

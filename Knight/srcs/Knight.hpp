@@ -1,31 +1,23 @@
 /**
+ * @file Knight.hpp
+ * @author jang hun han (wkdgns720@naver.com)
  * @brief
+ * @version 0.1
+ * @date 2024-01-10
+ *
+ * @copyright Copyright (c) 2024
  *
  */
+
 #pragma once
-#include <SFML/Graphics.hpp>
-#include "SFML/Graphics/Rect.hpp"
-#include "SFML/Graphics/Sprite.hpp"
-#include "SFML/Graphics/Text.hpp"
-#include "SFML/Graphics/Texture.hpp"
-#include "SFML/Window/Event.hpp"
-#include "SFML/Window/Keyboard.hpp"
+
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
-#include <iostream>
-#include <ostream>
+#include <SFML/Window.hpp>
+
+/*-------------------------*/
+
+#include "System.hpp"
 #include "Player.hpp"
 
 
-
-typedef struct PlayerStatus{
-	bool Idle;
-	bool Left;
-	bool Right;
-	bool Jump;
-	bool Attack;
-	bool Slide;
-	bool Crouch;
-	bool Roll;
-	bool Death;
-} KeyInfo;
