@@ -30,6 +30,9 @@ class System
 		sf::RenderWindow	_window;
 		sf::Event			_event;
 		Knight				_player;
+		Knight				_player2;
+		Knight				_player3;
+		Knight				_player4;
 		sf::Clock			clock;
 		void	_close();
 };

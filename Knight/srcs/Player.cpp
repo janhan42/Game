@@ -21,7 +21,7 @@
 #include <iostream>
 #include <ostream>
 
-float Scale = 5.0f;
+float Scale = 3.0f;
 
 Knight::Knight(sf::Vector2f position)
 :	Velocity(0.0f, 0.0f)
@@ -100,6 +100,8 @@ void Knight::SetState(State newState) {
 			if (!isAttack)
 				currentFrame = 0;
 			isAttack = true;
+			if (!isJumping)
+				Velocity.x = 0;
 			break;
 		case Jump:
 			playerSprite.setTexture(textures[Jump]);
@@ -125,6 +127,8 @@ void Knight::SetState(State newState) {
 			if (!isAttack)
 				currentFrame = 0;
 			isAttack = true;
+			if (!isJumping)
+				Velocity.x = 0;
 			break;
 		case CrouchWalkRight:
 			playerSprite.setTexture(textures[CrouchWalkRight]);
@@ -391,7 +395,7 @@ void	Knight::update(sf::RenderWindow& _window)
 	playerSprite.setTextureRect(newRect);
 	if (isJumping && !isFalling)
 	{
-		Velocity.y = -3.8f;
+		Velocity.y = -10.8f;
 	} else if (isTurn) {
 		if (currentFrame >= 0)
 			frameDuration = 0.5f;
