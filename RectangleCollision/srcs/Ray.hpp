@@ -9,7 +9,7 @@
  *
  */
 #pragma once
-#include "Rectangle.hpp"
+#include "Raycasting.hpp"
 #include "SFML/System/Vector2.hpp"
 
 using namespace sf;

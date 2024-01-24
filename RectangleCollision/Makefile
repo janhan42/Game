@@ -1,4 +1,4 @@
-NAME			=		RectangleCollision
+NAME			=		Raycasting.cpp
 
 CXX				=		c++
 CXXFLAGS		=		-I./SFML/include -std=c++11
@@ -8,9 +8,9 @@ SRCS_DIR		=		./srcs
 
 OBJ_DIR			=		./.OBJ
 
-SRC_FILES		=		$(SRCS_DIR)/RectangleCollision.cpp			\
-						$(SRCS_DIR)/Rectangle.cpp					\
-						$(SRCS_DIR)/Wall.cpp						\
+SRC_FILES		=		$(SRCS_DIR)/Raycasting.cpp				\
+						$(SRCS_DIR)/Player.cpp					\
+						$(SRCS_DIR)/Wall.cpp					\
 						$(SRCS_DIR)/Ray.cpp
 
 OBJ_FILES		=		$(SRC_FILES:$(SRCS_DIR)/%.cpp=$(OBJ_DIR)/%.o)

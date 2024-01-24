@@ -1,0 +1,2 @@
+CompileFlags:
+ Add: [-I/Users/zinox/Game/callender/SFML/include, -I/Users/zinox/Game/callender/src, -std=c++14]
