@@ -10,9 +10,9 @@
  */
 
 #include "SFML/Graphics/RenderWindow.hpp"
-#include "RectangleCollision.hpp"
+#include "Raycasting.hpp"
 
-Wall::Wall() : thickness(10)
+Wall::Wall() : thickness(4)
 {
 
 }

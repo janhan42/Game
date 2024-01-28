@@ -1,0 +1,2 @@
+CompileFlags:
+ Add: [-I/Users/zinox/Game/flood/SFML/include, -I/Users/zinox/Game/flood/src, -std=c++14]
