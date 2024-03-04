@@ -1,16 +1,18 @@
-NAME			=		EmeraldRealm
-
+NAME			=		TEST
 CXX				=		c++
-CXXFLAGS		=		-I./SFML/include
-LDFLAGS			=		-L./SFML/lib -lsfml-window -lsfml-graphics -lsfml-system -Wl,-rpath,./SFML/lib
+CXXFLAGS		=		-I./SFML/include -std=c++11
+LDFLAGS			=		-L./SFML/lib -lsfml-window -lsfml-graphics -lsfml-system  -lsfml-audio -Wl,-rpath,./SFML/lib
 
 SRCS_DIR		=		./srcs
 
 OBJ_DIR			=		./.OBJ
 
 SRC_FILES		=		$(SRCS_DIR)/main.cpp			\
-						$(SRCS_DIR)/Player.cpp			\
-						$(SRCS_DIR)/SpriteUpdate.cpp
+						$(SRCS_DIR)/Player_Left.cpp		\
+						$(SRCS_DIR)/Player_Right.cpp	\
+						$(SRCS_DIR)/PlayerStick.cpp		\
+						$(SRCS_DIR)/Ball.cpp			\
+						$(SRCS_DIR)/DottedLine.cpp
 
 OBJ_FILES		=		$(SRC_FILES:$(SRCS_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 

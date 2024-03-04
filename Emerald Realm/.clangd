@@ -1,2 +1,0 @@
-CompileFlags:
- Add: [-I/Users/janhan/Game/Emerald Realm/SFML/include, -I/Users/janhan/Game/Emerald Realm/src, -std=c++11]

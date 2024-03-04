@@ -327,68 +327,9 @@ void	Knight::update(sf::RenderWindow& _window)
 	std::cout << "totalFrames : " << totalFrames << " " << "currenFrame : "<< currentFrame << " " << "currentState : " << currentState << " " << "frameDuration : " << frameDuration << std::endl;
 
 	if (clock.getElapsedTime().asSeconds() > frameDuration) {
-		if (!isCrouch)
 			currentFrame = currentFrame + 1 % totalFrames;
-		else if (isCrouchMovingLeft || isCrouchMovingRight || isSlide || isAttack)
-			currentFrame = currentFrame + 1 % totalFrames;
-		else
-			currentFrame = currentFrame + 1 % totalFrames;
-		if (currentFrame >= totalFrames) {
-			if (isTurn) {
-				isTurn = false;
-			}
-			if (isSlide)
-			{
-				isSlide = false;
-				if (isMovingLeft) {
-					SetState(Left);
-				} else if (isMovingRight) {
-					SetState(Right);
-				} else if (isCrouch) {
-					SetState(Crouch);
-				} else {
-					SetState(Idle);
-				}
-			}
-			if (isJumping) {
-				isFalling = true;
-				SetState(Falling);
-				Velocity.y = 9.8f;
-			}
-			if (isAttack) {
-				isAttack = false;
-				if (isCrouch) {
-					SetState(Crouch);
-				} else if (isCrouchMovingLeft) {
-					SetState(CrouchWalkLeft);
-				} else if (isCrouch && isCrouchMovingRight) {
-					SetState(CrouchWalkRight);
-				} else if (isMovingLeft) {
-					SetState(Left);
-				} else if (isMovingRight) {
-					SetState(Right);
-				} else {
-					SetState(Idle);
-				}
-			}
-			if (isRoll) {
-				isRoll = false;
-				if (isCrouch) {
-					SetState(Crouch);
-				} else if (isCrouch && isCrouchMovingLeft) {
-					SetState(CrouchWalkLeft);
-				} else if (isCrouch && isCrouchMovingRight) {
-					SetState(CrouchWalkRight);
-				} else if (isMovingLeft && !isCrouch) {
-					SetState(Left);
-				} else if (isMovingRight && !isCrouch) {
-					SetState(Right);
-				} else {
-					SetState(Idle);
-				}
-			}
+		if (currentFrame >= totalFrames)
 			currentFrame = 0;
-		}
 		clock.restart();
 	}
 	sf::IntRect newRect(120 * currentFrame, 0, 120, 80);
