@@ -6,7 +6,7 @@
 /*   By: janhan <janhan@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 08:06:56 by janhan            #+#    #+#             */
-/*   Updated: 2024/05/07 12:10:26 by janhan           ###   ########.fr       */
+/*   Updated: 2024/05/07 17:02:10 by janhan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 int main(int ac, char **av)
 {
-	sf::RenderWindow window(sf::VideoMode(1500, 750), "cub3d");
+	sf::RenderWindow window(sf::VideoMode(2000, 750), "cub3d");
 	Player player(300, 300);
 	window.setFramerateLimit(60);
 	sf::Event event;

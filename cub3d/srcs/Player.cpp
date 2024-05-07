@@ -6,7 +6,7 @@
 /*   By: janhan <janhan@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 08:26:22 by janhan            #+#    #+#             */
-/*   Updated: 2024/05/07 12:12:01 by janhan           ###   ########.fr       */
+/*   Updated: 2024/05/07 17:30:52 by janhan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "SFML/Graphics/Color.hpp"
 #include "SFML/Graphics/PrimitiveType.hpp"
 #include "SFML/Graphics/RectangleShape.hpp"
+#include "SFML/Graphics/Text.hpp"
 #include "SFML/System/Vector2.hpp"
 #include "SFML/Window/Event.hpp"
 #include "SFML/Window/Keyboard.hpp"
@@ -28,14 +29,14 @@
 int map[] =
 {
 	1,1,1,1,1,1,1,1,1,1,
-	1,0,1,0,0,0,0,0,0,1,
-	1,0,1,0,0,0,0,0,0,1,
-	1,0,1,0,0,0,0,0,0,1,
-	1,0,1,0,0,0,0,0,0,1,
-	1,0,1,0,0,1,0,0,0,1,
-	1,0,1,0,0,0,0,0,0,1,
+	1,0,1,0,1,0,1,0,0,1,
 	1,0,0,0,0,0,0,0,0,1,
+	1,0,1,0,1,0,1,0,0,1,
 	1,0,0,0,0,0,0,0,0,1,
+	1,0,1,0,1,0,1,0,0,1,
+	1,0,0,0,0,0,0,0,0,1,
+	1,0,1,0,1,0,1,0,0,1,
+	1,0,0,1,1,0,0,0,0,1,
 	1,1,1,1,1,1,1,1,1,1
 };
 int mapX=10,mapY=10,mapS=64;
@@ -69,7 +70,7 @@ void	Player::drawRays3d(sf::RenderWindow &window)
 	float pi = 3.1415926535;
 	sf::Color DrawWall;
 
-	ra = p_angel - DR * 30;
+	ra = p_angel - DR * 30; // 총 60도 시야각 을 만들어야함.
 	if(ra < 0)
 	{
 		ra += 2 * PI;
@@ -78,7 +79,7 @@ void	Player::drawRays3d(sf::RenderWindow &window)
 	{
 		ra -= 2 *PI;
 	}
-	for (r = 0; r < 880; r++)
+	for (r = 0; r < 1000; r++)
 	{
 		// ---- Check Horizontal Lines -----
 		dof = 0;
@@ -169,14 +170,17 @@ void	Player::drawRays3d(sf::RenderWindow &window)
 			rx = vx;
 			ry = vy;
 			disT = disV;
-			DrawWall = sf::Color(117, 170, 255);
+			std::cout << "disT : " << disT << std::endl;
+			std::cout << "(int)disT /  : " << (int)disT / 10 << std::endl;
+
+			DrawWall = sf::Color(117 - (int)disT / 10, 170, 255);
 		}
 		else if (disH < disV) // horizontal wall
 		{
 			rx = hx;
 			ry = hy;
 			disT = disH;
-			DrawWall = sf::Color(91, 133, 201);
+			DrawWall = sf::Color(91 - (int)disT / 10, 133, 201);
 		}
 		sf::Vertex line[] =
 		{
@@ -195,21 +199,30 @@ void	Player::drawRays3d(sf::RenderWindow &window)
 			ca -= 2 * PI;
 		}
 		disT = disT * cos(ca); // fix fisheye
-		float lineH = (mapS * 200) / (disT);
-		float lineO = 64 - lineH / 2;
-		if (lineH > 320)
+		float lineH = (mapS * 500) / (disT); // 벽을 만들때의 최대 길이 지정
+		float lineO = 15 - lineH / 2; // 화면 중앙에 올수있게 오프셋
+		std::cout << "lineO : " << lineO << std::endl;
+		if (lineH > 500)
 		{
-			lineH = 320;
+			lineH = 500;
 		}
+		sf::RectangleShape floor(sf::Vector2f(1, 1200));
+		sf::RectangleShape sealing(sf::Vector2f(1, 1200));
 		sf::RectangleShape line3(sf::Vector2f(1, lineH));
 		sf::RectangleShape line4(sf::Vector2f(1, lineH));
+		sealing.setFillColor(sf::Color(250, 197, 82));
+		floor.setFillColor(sf::Color::Yellow);
 		line3.setFillColor(DrawWall);
 		line4.setFillColor(DrawWall);
-		line4.setPosition(r * 0.7 + 650, lineO + 300);
-		line3.setPosition(r * 0.7 + 650, lineO + lineH + 300);
+		sealing.setPosition(r * 1 + 650, lineO / 2);
+		floor.setPosition(r * 1 + 650, lineO + 300);
+		line4.setPosition(r * 1 + 650, lineO + 300);
+		line3.setPosition(r * 1 + 650, lineO + lineH + 300);
+		window.draw(sealing);
+		window.draw(floor);
 		window.draw(line3);
 		window.draw(line4);
-		ra += DR / 16;
+		ra += DR / 20;
 		if (ra < 0)
 		{
 			ra += 2 * PI;
