@@ -43,9 +43,11 @@ void	PlayerStick::moveDown(float deltaTime)
 		Stick.move(0, moveAmount);
 	}
 }
-
+#include <random>
 void	PlayerStick::Ai(float deltaTime, sf::RenderWindow& window, sf::Vector2f Ballpos)
 {
+	if (rand() % 10 < 1)
+		return ;
 	float stickCenterY = this->Stick.getPosition().y + this->Stick.getSize().y / 2.0f;
     float distanceY = std::abs(Ballpos.y - stickCenterY); // Y축 거리
     float distanceX = std::abs(Ballpos.x - this->Stick.getPosition().x); // X축 거리
@@ -68,8 +70,8 @@ void	PlayerStick::Ai(float deltaTime, sf::RenderWindow& window, sf::Vector2f Bal
 		// 거리에 따른 반응 속도 조정
 		float speedAdjustment = distanceX / reactionDistanceX;
 		float moveSpeed = Speed * speedAdjustment;
-		if (moveSpeed < 7)
-			moveSpeed = 7;
+		if (moveSpeed <= 6)
+			moveSpeed = 6;
 		if (Ballpos.y > stickCenterY && distanceY > this->Stick.getSize().y / 4.0f) {
 			this->Stick.move(0, moveSpeed);
 		} else if (Ballpos.y < stickCenterY && distanceY > this->Stick.getSize().y / 4.0f) {

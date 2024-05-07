@@ -103,6 +103,7 @@ void Ball::update(const PlayerStick& playerLeft, const PlayerStick& playerRight,
 void Ball::resetBall(sf::RenderWindow& window)
 {
 	shape.setPosition(window.getSize().x / 2.0f, window.getSize().y / 2.0f);
+	velocity.y = 0;
 }
 
 sf::Vector2f Ball::getPosition()

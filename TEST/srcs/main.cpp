@@ -9,6 +9,8 @@
  *
  */
 
+#include <random>
+
 #include "SFML/Graphics/RenderWindow.hpp"
 #include "SFML/Window/Event.hpp"
 #include "SFML/Window/Keyboard.hpp"
@@ -24,6 +26,7 @@ bool keyinfo[4] = { false };
 
 int	main(void)
 {
+	srand(time(0));
 	sf::RenderWindow window(sf::VideoMode(1500, 1000), "PONG");
 	window.setFramerateLimit(60);
 	sf::Event event;
@@ -103,8 +106,10 @@ int	main(void)
 		if (keyinfo[3] == true)
 			playerRight.moveDown(0.5);
 		ball.update(playerLeft, playerRight, window, scoreLeft, scoreRight);
-		playerLeft.Ai(0.5, window, ball.getPosition());
+		// playerLeft.update(event, 0.5);
+		// playerRight.update(event, 0.5);
 		playerRight.Ai(0.5, window, ball.getPosition());
+		playerLeft.Ai(0.5, window, ball.getPosition());
 		scoreTextleft.setString(std::to_string(scoreLeft));
 		scoreTextright.setString(std::to_string(scoreRight));
 		window.clear();
